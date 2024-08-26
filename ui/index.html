@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullstack Vanilla JavaScript | Erick Wendel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+
+        section {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+
+        .form-group label {
+            flex: 0 0 50px;
+            align-self: center;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 300px;
+            font-size: 16px;
+            background-color: #fafafa;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary,
+        .btn-danger {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .flex-table {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .flex-table-header,
+        .flex-table-row {
+            display: flex;
+            padding: 10px;
+            align-items: center;
+        }
+
+        .flex-table-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .flex-table-header div,
+        .flex-table-row div {
+            flex: 1;
+            text-align: left;
+            padding: 3px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <form id="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter your age">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn-primary">Submit</button>
+                <button type="button" class="btn-danger" id="btnFormClear">Clear</button>
+            </div>
+        </form>
+
+        <div class="flex-table">
+            <div class="flex-table-header">
+                <div>Name</div>
+                <div>Age</div>
+                <div>Email</div>
+            </div>
+            <div class="flex-table-row">
+                <div>John Doe</div>
+                <div>25</div>
+                <div>john.doe@example.com</div>
+            </div>
+            <div class="flex-table-row">
+                <div>Jane Smith</div>
+                <div>30</div>
+                <div>jane.smith@example.com</div>
+            </div>
+            <div class="flex-table-row">
+                <div>Alice Brown</div>
+                <div>28</div>
+                <div>alice.brown@example.com</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="container"></div>
+</body>
+
+</html>
