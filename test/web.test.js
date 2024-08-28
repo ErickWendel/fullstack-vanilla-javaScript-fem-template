@@ -3,7 +3,7 @@ import Controller from '../src/shared/controller.js';
 import View from './../src/platforms/web/view.js'
 import assert from 'node:assert'
 
-function getDocument(mock) {
+function getDocument(mock, inputs = { name: 'test', age: 'test', email: 'test' }) {
     globalThis.alert = mock.fn()
 
     globalThis.document = {
@@ -13,8 +13,11 @@ function getDocument(mock) {
             }
         })),
         querySelector: mock.fn((id) => {
+            const key = id.replace('#', '')
+            const value = inputs[key] ?? 'test'
+
             return {
-                value: 'test',
+                value,
                 addEventListener: mock.fn((event, fn) => {
 
                     return fn({
@@ -83,4 +86,44 @@ describe('Web app test suite', () => {
         )
 
     })
+
+    it('given invalid data, should call alert with message', (context) => {
+        const document = getDocument(context.mock, {
+            age: '',
+            name: '',
+            email: ''
+        })
+
+        const view = new View()
+
+        const addRow = context.mock.method(view, view.addRow.name)
+        const notify = context.mock.method(view, view.notify.name)
+
+        _controller = Controller.init({
+            view
+        })
+
+        const [
+            name,
+            age,
+            email,
+            tableBody,
+            form,
+            btnFormClear
+        ] = document.querySelector.mock.calls
+
+        const onSubmit = form.result.addEventListener.mock.calls[0].arguments[1]
+        const preventDefaultSpy = context.mock.fn()
+        assert.strictEqual(addRow.mock.callCount(), 3)
+
+        onSubmit({
+            preventDefault: preventDefaultSpy
+        })
+        assert.deepStrictEqual(
+            notify.mock.calls[0].arguments[0],
+            { msg: 'Please, fill out all the fields.' }
+        )
+
+    })
+
 })
