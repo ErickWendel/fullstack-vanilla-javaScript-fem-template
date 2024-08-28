@@ -1,8 +1,10 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Test Debugger",
+            "type": "node",
             "request": "launch",
+            "name": "Run Test Debugger",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run",
@@ -11,10 +13,10 @@
             "cwd": "${fileDirname}",
             "skipFiles": [
                 "<node_internals>/**/**",
-                "node_modules/**",
+                "node_modules/**/**",
             ],
-            "type": "node",
             "console": "integratedTerminal"
         }
-    ]
+    ],
+    "compounds": []
 }
