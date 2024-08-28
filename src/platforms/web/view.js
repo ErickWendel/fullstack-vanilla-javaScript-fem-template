@@ -6,6 +6,7 @@ export default class View extends ViewBase {
     #email = document.querySelector('#email')
     #tableBody = document.querySelector('.flex-table')
     #form = document.querySelector('#form')
+    #btnFormClear = document.querySelector('#btnFormClear')
 
     /**
      * Adds a new row of data to the display.
@@ -41,6 +42,38 @@ export default class View extends ViewBase {
 
             return fn({ name, age, email })
         })
+    }
+
+    /**
+     * Displays a notification to the user.
+     * This method can be overridden to change how notifications are presented.
+     * @param {Object} notification - The notification to display.
+     * @param {string} notification.msg - The message to display to the user.
+     * @param {boolean} notification.isError - Whether the message is an error.
+     * @returns {void}
+     */
+    notify({ msg, isError }) {
+        alert(msg)
+    }
+
+    /**
+     * Configures the clear action for the form.
+     * When the clear button is clicked, the form fields are reset.
+     * @param {Function} fn - The callback function to execute on form submission.
+     * @returns {void}
+     */
+    configureFormClear(fn) {
+        this.#btnFormClear.addEventListener('click', () => {
+            this.resetForm()
+        })
+    }
+
+    /**
+     * Resets the form fields to their initial state.
+     * @returns {void}
+     */
+    resetForm() {
+        this.#form.reset()
     }
 
     /**

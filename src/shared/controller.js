@@ -17,12 +17,23 @@ export default class Controller {
         return controller
     }
 
+    #isValid(data) {
+        return data.name && data.age && data.email
+    }
+
     #onSubmit({ name, age, email }) {
-        console.log('received', { name, age, email })
+        if (!this.#isValid({ name, age, email })) {
+            this.#view.notify({ msg: 'Please, fill out all the fields.' })
+            return
+        }
+
+        this.#view.addRow({ name, age, email })
     }
 
     #init() {
         this.#view.configureFormSubmit(this.#onSubmit.bind(this))
+        this.#view.configureFormClear()
+
         const initalData = [
             { name: 'Erick Wendel', age: 28, email: 'erick@erick.com' },
             { name: 'Ana Neri', age: 24, email: 'ana@ana.com' },
