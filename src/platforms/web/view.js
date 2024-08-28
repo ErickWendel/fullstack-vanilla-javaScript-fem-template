@@ -5,6 +5,7 @@ export default class View extends ViewBase {
     #age = document.querySelector('#age')
     #email = document.querySelector('#email')
     #tableBody = document.querySelector('.flex-table')
+    #form = document.querySelector('#form')
 
     /**
      * Adds a new row of data to the display.
@@ -22,6 +23,24 @@ export default class View extends ViewBase {
             <div>${data.email}</div>
         `
         this.#tableBody.appendChild(row)
+    }
+
+    /**
+     * Configures the form submission behavior.
+     * When the form is submitted, the provided callback function is executed with the form data.
+     * @param {Function} fn - The callback function to execute on form submission.
+     * @returns {void}
+     */
+    configureFormSubmit(fn) {
+        this.#form.addEventListener('submit', event => {
+            event.preventDefault()
+
+            const name = this.#name.value
+            const age = this.#age.value
+            const email = this.#email.value
+
+            return fn({ name, age, email })
+        })
     }
 
     /**
