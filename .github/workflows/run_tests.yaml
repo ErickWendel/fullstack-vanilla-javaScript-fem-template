@@ -1,0 +1,28 @@
+name: Run tests
+
+on:
+  push:
+    paths:
+      - '**.js'
+      - '**.json'
+      - '**.yaml'
+    branches:
+      - main
+      - livecode
+jobs:
+  setup-and-test:
+    runs-on: ubuntu
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Restore Dependencies
+      run: npm ci
+
+    - name: Run tests
+      run: npm test
