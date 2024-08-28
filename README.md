@@ -24,7 +24,7 @@ ui/index.js - Factory Behavior: Your controller is acting as a factory that deci
 > August 28 to 29, 2024 - 9:30am to 5:30pm Central Daylight Time
 
 
-<img src="./cover.jpeg" width=300 />
+![cover image](./cover.jpeg)
 
 Acess the [slides](https://www.icloud.com/keynote/032Y1iBWTJMdLbFIw2A3F23VA#FullStack_Vanilla_JS_-_FEM_-_Erick_Wendel)
 
