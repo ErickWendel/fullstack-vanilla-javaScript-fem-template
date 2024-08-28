@@ -65,6 +65,7 @@ export default class View extends ViewBase {
     configureFormClear(fn) {
         this.#btnFormClear.addEventListener('click', () => {
             this.resetForm()
+            return fn()
         })
     }
 
