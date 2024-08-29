@@ -18,7 +18,7 @@
     "cli": "node ui/index.js",
     "dev": "node --inspect --watch ui/index.js",
     "test": "node  --experimental-test-coverage --test test/",
-    "test:dev": "node --inspect --watch --test test/"
+    "test:dev": "node --inspect --watch --test test/controller.test.js"
   },
   "keywords": [],
   "author": "erickwendel",

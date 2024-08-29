@@ -17,10 +17,14 @@ function generateView() {
 }
 
 describe('Controller unit test', () => {
-    it('#init', () => {
+    it('#init', async () => {
         const view = generateView()
-        const controller = Controller.init({
-            view
+        const controller = await Controller.init({
+            view,
+            service: {
+                getUsers: mock.fn(async () => []),
+                createUser: mock.fn(async () => ({}))
+            }
         })
 
         assert.strictEqual(view.configureFormSubmit.mock.callCount(), 1)
