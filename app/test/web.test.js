@@ -50,8 +50,12 @@ describe('Web app test suite', () => {
 
         const addRow = context.mock.method(view, view.addRow.name)
 
-        _controller = Controller.init({
-            view
+        _controller = await Controller.init({
+            view,
+            service: {
+                getUsers: context.mock.fn(async () => []),
+                createUser: context.mock.fn(async () => ({}))
+            }
         })
 
         const [
@@ -87,7 +91,7 @@ describe('Web app test suite', () => {
 
     })
 
-    it('given invalid data, should call alert with message', (context) => {
+    it('given invalid data, should call alert with message', async (context) => {
         const document = getDocument(context.mock, {
             age: '',
             name: '',
@@ -99,8 +103,12 @@ describe('Web app test suite', () => {
         const addRow = context.mock.method(view, view.addRow.name)
         const notify = context.mock.method(view, view.notify.name)
 
-        _controller = Controller.init({
-            view
+        _controller = await Controller.init({
+            view,
+            service: {
+                getUsers: context.mock.fn(async () => []),
+                createUser: context.mock.fn(async () => ({}))
+            }
         })
 
         const [
