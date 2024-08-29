@@ -8,7 +8,7 @@
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run",
-                "cli:dev"
+                "dev"
             ],
             "cwd": "${fileDirname}",
             "skipFiles": [
