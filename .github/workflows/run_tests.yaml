@@ -21,8 +21,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore Dependencies
+      - name: Restore Dependencies for app
         run: npm ci
+        working-directory: ./app/
 
-      - name: Run tests
+      - name: Run tests  for app
         run: npm test
+        working-directory: ./app/
+
+      - name: Restore Dependencies for webapi
+        run: npm ci
+        working-directory: ./web-api/
+
+      - name: Run tests for webapi
+        run: npm test
+        working-directory: ./web-api/

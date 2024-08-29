@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --inspect --watch src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Sorry, I'll implement it later :) \""
   },
   "keywords": [],
   "author": "erickwendel",
