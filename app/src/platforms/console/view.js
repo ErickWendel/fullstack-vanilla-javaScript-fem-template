@@ -39,7 +39,7 @@ export default class View extends ViewBase {
     }
 
     notify({ msg, isError }) {
-        this.#components.alert.setMessage(msg)
+        this.#components?.alert.setMessage(msg)
     }
 
     configureFormSubmit(fn) {
