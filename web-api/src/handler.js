@@ -19,7 +19,7 @@ const userRoutes = routes({
 
 const allRoutes = {
     ...userRoutes,
-    default(request, response) {
+    defaultRoute(request, response) {
         response.writeHead(404, DEFAULT_HEADERS)
         response.write(
             JSON.stringify({
@@ -40,12 +40,23 @@ function handler(request, response) {
     const { pathname } = parse(url, true)
 
     const key = `${pathname}:${method.toLowerCase()}`
-    const chosen = allRoutes[key] ?? allRoutes.default
+    const chosen = allRoutes[key] ?? allRoutes.defaultRoute
 
     return Promise.resolve(chosen(request, response))
-        .catch((error) => {
-            console.log('error', error)
-        })
+        .catch(handleError(response))
+}
+
+function handleError(response) {
+    return error => {
+        console.log('Something bad has happened', error.stack)
+        response.writeHead(500, DEFAULT_HEADERS)
+        response.write(
+            JSON.stringify({
+                error: 'internal server error'
+            })
+        )
+        return response.end()
+    }
 }
 
 export default handler
