@@ -1,10 +1,17 @@
 {
-  "name": "@erickwendel/user-management-app",
+  "name": "@erickwendel/user-management-app-fem",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
     "user-management-app": "./ui/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/ErickWendel/fullstack-vanilla-javaScript-fem-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErickWendel/fullstack-vanilla-javaScript-fem-template.git"
   },
   "scripts": {
     "web": "npx browser-sync './' ui/",
