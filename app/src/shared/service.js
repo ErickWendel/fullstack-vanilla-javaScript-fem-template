@@ -9,4 +9,12 @@ export default class Service {
         return result.json()
     }
 
+    async createUser(data) {
+        const result = await fetch(`${this.#url}/users`, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+
+        return result.json()
+    }
 }
