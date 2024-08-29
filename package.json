@@ -1,11 +1,15 @@
 {
-  "name": "initial-app-template",
+  "name": "@erickwendel/user-management-app",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "user-management-app": "./ui/index.js"
+  },
   "scripts": {
     "web": "npx browser-sync './' ui/",
     "cli": "node ui/index.js",
+    "cli:dev": "node --inspect --watch ui/index.js",
     "test": "node  --experimental-test-coverage --test test/",
     "test:dev": "node --inspect --watch --test test/"
   },
@@ -18,5 +22,9 @@
   },
   "devDependencies": {
     "browser-sync": "^2.29.3"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "4.11"
   }
 }
